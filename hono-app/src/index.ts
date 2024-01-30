@@ -20,12 +20,13 @@ type Message = {
 app.post("/chat", async (c) => {
   const body = await c.req.json<{
     message: string;
-    mesaages: Message[];
+    messages: Message[];
   }>();
+  console.log(body.messages);
   return streamText(c, async (stream) => {
     const chatStream = openai.beta.chat.completions.stream({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: body.message }],
+      messages: [...body.messages, { role: "user", content: body.message }],
       stream: true,
     });
 

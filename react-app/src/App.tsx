@@ -30,7 +30,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, messages }),
       signal: abortControllerRef.current.signal,
     });
 
