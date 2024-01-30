@@ -22,7 +22,6 @@ app.post("/chat", async (c) => {
     message: string;
     messages: Message[];
   }>();
-  console.log(body.messages);
   return streamText(c, async (stream) => {
     const chatStream = openai.beta.chat.completions.stream({
       model: "gpt-3.5-turbo",
